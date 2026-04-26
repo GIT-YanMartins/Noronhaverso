@@ -1,7 +1,6 @@
 # 🌌 Noronhaverso: Geoturismo Virtual e Divulgação Geocientífica de Fernando de Noronha
 
-[![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](#)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](#)
+[![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](COLOQUE_SEU_LINK_AQUI)
 [![Instituição](https://img.shields.io/badge/Instituição-UFBA-blue?style=for-the-badge)](#)
 
 > **A democratização do conhecimento geológico e conservação do patrimônio natural brasileiro através da imersão digital.**
@@ -22,10 +21,10 @@
 
 [cite_start]A construção da aplicação web é fundamentada no uso integrado de tecnologias padrão de desenvolvimento front-end[cite: 18].
 
-* [cite_start]**HTML5:** Utilizado para construir o corpo estrutural da aplicação e organizar as páginas[cite: 20]. [cite_start]Responsável pela inserção e estruturação dos conteúdos geocientíficos[cite: 7].
+* [cite_start]**HTML5:** Utilizado para construir o corpo estrutural da aplicação e organizar as páginas[cite: 20]. [cite_start]Responsável pela inserção e estruturação dos conteúdos geocientíficos[cite: 21].
 * [cite_start]**CSS3:** Aplicado para a estilização visual do projeto e definição de layout e tipografia[cite: 22]. [cite_start]Garante o design responsivo para adaptação a diferentes tamanhos de tela, incluindo dispositivos móveis e óculos de realidade virtual[cite: 23].
 * [cite_start]**JavaScript:** Responsável pela implementação de funcionalidades dinâmicas e interativas[cite: 25]. [cite_start]Permite a incorporação e integração de modelos 3D no ambiente virtual[cite: 26].
-* [cite_start]**Hospedagem:** A aplicação web poderá ser publicada em plataformas de hospedagem como GitHub Pages e Vercel[cite: 31]. [cite_start]Isso permite sua disponibilização pública de forma gratuita[cite: 31].
+* [cite_start]**Hospedagem:** A aplicação web será publicada no GitHub Pages, permitindo sua disponibilização pública de forma gratuita e acessível[cite: 31].
 * [cite_start]**Versionamento:** Adoção de um sistema de documentação utilizando comentários no código para registrar as modificações[cite: 27].
 
 ---
