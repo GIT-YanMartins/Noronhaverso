@@ -1,6 +1,6 @@
 # 🌌 Noronhaverso: Geoturismo Virtual e Divulgação Geocientífica de Fernando de Noronha
 
-[![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)]([COLOQUE_SEU_LINK_AQUI](https://git-yanmartins.github.io/Noronhaverso/)
+[![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)]([COLOQUE_SEU_LINK_AQUI]((https://git-yanmartins.github.io/Noronhaverso/))
 [![Instituição](https://img.shields.io/badge/Instituição-UFBA-blue?style=for-the-badge)](#)
 
 > **A democratização do conhecimento geológico e conservação do patrimônio natural brasileiro através da imersão digital.**
