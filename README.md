@@ -1,6 +1,6 @@
 # 🌌 Noronhaverso: Geoturismo Virtual e Divulgação Geocientífica de Fernando de Noronha
 
-[![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)]([COLOQUE_SEU_LINK_AQUI]((https://git-yanmartins.github.io/Noronhaverso/))
+[![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://git-yanmartins.github.io/Noronhaverso/)
 [![Instituição](https://img.shields.io/badge/Instituição-UFBA-blue?style=for-the-badge)](#)
 
 > **A democratização do conhecimento geológico e conservação do patrimônio natural brasileiro através da imersão digital.**
@@ -35,5 +35,3 @@ A construção da aplicação web é fundamentada no uso integrado de tecnologia
 * **Departamento:** Vinculado à Pró-Reitoria de Extensão, Arte e Cultura.
 * **Orientação:** Proponente Letícia Freitas Guimarães.
 * **Programa:** Plano de trabalho de estudante bolsista de extensão. Parte integrante do edital PIBIEx 2026-2027.
-
-O noronhaverso se trata de um app em React JS elaborado com Letícia Freitas Guimarães - PhD geologist, Giovane Araujo Carneiro -  B.Sc. geologist, Francisco Manoel Wohnrath Tognoli - PhD geologist, Marcelo Freitas Guimarães - B.Sc. geologist, Daíse Araújo dos Santos - B.Sc. geologist, Lara C. Andrade da Silva - B.Sc geologist, Eduardo Reis Viana Rocha Júnior - PhD geologist, Anderson Costa dos Santos, PhD geologist
