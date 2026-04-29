@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Noronhaverso/static/css/main.8472acad.css",
-    "main.js": "/Noronhaverso/static/js/main.d8d1514f.js",
+    "main.css": "/Noronhaverso/static/css/main.569e5822.css",
+    "main.js": "/Noronhaverso/static/js/main.6d1362f9.js",
     "static/js/453.8f669267.chunk.js": "/Noronhaverso/static/js/453.8f669267.chunk.js",
     "static/media/Noronhaverso_cartoon.png": "/Noronhaverso/static/media/Noronhaverso_cartoon.83e9ec5ce2909db1684f.png",
     "index.html": "/Noronhaverso/index.html",
-    "main.8472acad.css.map": "/Noronhaverso/static/css/main.8472acad.css.map",
-    "main.d8d1514f.js.map": "/Noronhaverso/static/js/main.d8d1514f.js.map",
+    "main.569e5822.css.map": "/Noronhaverso/static/css/main.569e5822.css.map",
+    "main.6d1362f9.js.map": "/Noronhaverso/static/js/main.6d1362f9.js.map",
     "453.8f669267.chunk.js.map": "/Noronhaverso/static/js/453.8f669267.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8472acad.css",
-    "static/js/main.d8d1514f.js"
+    "static/css/main.569e5822.css",
+    "static/js/main.6d1362f9.js"
   ]
 }
