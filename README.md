@@ -11,9 +11,9 @@ O presente projeto insere-se no contexto de desenvolvimento de uma aplicação w
 
 ## ✨ Funcionalidades Principais
 
-* **Exploração Imersiva:** O usuário terá acesso a imagens de satélite, fotomosaicos, fotos e vídeos aéreos.
-* **Visualização 3D:** A plataforma integra modelos digitais de terreno e modelos 3D. Esses modelos permitem a visualização imersiva de afloramentos geológicos em alta resolução.
-* **Acervo Geocientífico:** Disponibiliza textos explicativos e ilustrações sobre a geologia do Arquipélago de Fernando de Noronha. Informa também sobre a história de formação do arquipélago.
+- **Exploração Imersiva:** O usuário terá acesso a imagens de satélite, fotomosaicos, fotos e vídeos aéreos.
+- **Visualização 3D:** A plataforma integra modelos digitais de terreno e modelos 3D. Esses modelos permitem a visualização imersiva de afloramentos geológicos em alta resolução.
+- **Acervo Geocientífico:** Disponibiliza textos explicativos e ilustrações sobre a geologia do Arquipélago de Fernando de Noronha. Informa também sobre a história de formação do arquipélago.
 
 ---
 
@@ -21,17 +21,17 @@ O presente projeto insere-se no contexto de desenvolvimento de uma aplicação w
 
 A construção da aplicação web é fundamentada no uso integrado de tecnologias padrão de desenvolvimento front-end.
 
-* **HTML5:** Utilizado para construir o corpo estrutural da aplicação e organizar as páginas. Responsável pela inserção e estruturação dos conteúdos geocientíficos.
-* **CSS3:** Aplicado para a estilização visual do projeto e definição de layout e tipografia. Garante o design responsivo para adaptação a diferentes tamanhos de tela, incluindo dispositivos móveis e óculos de realidade virtual.
-* **JavaScript:** Responsável pela implementação de funcionalidades dinâmicas e interativas. Permite a incorporação e integração de modelos 3D no ambiente virtual.
-* **Hospedagem:** A aplicação web será publicada no GitHub Pages, permitindo sua disponibilização pública de forma gratuita e acessível.
-* **Versionamento:** Adoção de um sistema de documentação utilizando comentários no código para registrar as modificações.
+- **HTML5:** Utilizado para construir o corpo estrutural da aplicação e organizar as páginas. Responsável pela inserção e estruturação dos conteúdos geocientíficos.
+- **CSS3:** Aplicado para a estilização visual do projeto e definição de layout e tipografia. Garante o design responsivo para adaptação a diferentes tamanhos de tela, incluindo dispositivos móveis e óculos de realidade virtual.
+- **JavaScript:** Responsável pela implementação de funcionalidades dinâmicas e interativas. Permite a incorporação e integração de modelos 3D no ambiente virtual.
+- **Hospedagem:** A aplicação web será publicada no GitHub Pages, permitindo sua disponibilização pública de forma gratuita e acessível.
+- **Versionamento:** Adoção de um sistema de documentação utilizando comentários no código para registrar as modificações.
 
 ---
 
 ## 🎓 Vínculo Institucional
 
-* **Instituição:** Projeto desenvolvido na Universidade Federal da Bahia.
-* **Departamento:** Vinculado à Pró-Reitoria de Extensão, Arte e Cultura.
-* **Orientação:** Proponente Letícia Freitas Guimarães.
-* **Programa:** Plano de trabalho de estudante bolsista de extensão. Parte integrante do edital PIBIEx 2026-2027.
+- **Instituição:** Projeto desenvolvido na Universidade Federal da Bahia.
+- **Departamento:** Vinculado à Pró-Reitoria de Extensão, Arte e Cultura.
+- **Orientação:** Proponente Letícia Freitas Guimarães.
+- **Programa:** Plano de trabalho de estudante bolsista de extensão. Parte integrante do edital PIBIEx 2026-2027.

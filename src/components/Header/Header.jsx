@@ -1,13 +1,16 @@
-import './Header.css';
-import { FiMoon, FiSun } from 'react-icons/fi';
-import NoronhaversoCartoon from '../../assets/images/Noronhaverso_cartoon.png';
+import "./Header.css";
+import { FiMoon, FiSun } from "react-icons/fi";
+import NoronhaversoCartoon from "../../assets/images/Noronhaverso_cartoon.png";
 ///import NoronhaversoRealist from '../../../Assets/Images/Noronhaverso_realist.png';
-
 
 function Header({ isDarkMode, onToggleTheme }) {
   return (
     <header className="header-box">
-      <img src={NoronhaversoCartoon} alt="Noronhaverso cartoon" className="noronha1" />
+      <img
+        src={NoronhaversoCartoon}
+        alt="Noronhaverso cartoon"
+        className="noronha1"
+      />
       <section className="headerNavegation">
         <nav className="nav-box">
           <ul className="list">
@@ -20,7 +23,7 @@ function Header({ isDarkMode, onToggleTheme }) {
             type="button"
             className="theme-toggle-button"
             onClick={onToggleTheme}
-            aria-label={isDarkMode ? 'Ativar modo claro' : 'Ativar modo escuro'}
+            aria-label={isDarkMode ? "Ativar modo claro" : "Ativar modo escuro"}
           >
             {isDarkMode ? <FiSun /> : <FiMoon />}
           </button>
