@@ -1,33 +1,47 @@
-import "./Header.css";
+import { NavLink } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
-import NoronhaversoCartoon from "../../assets/images/Noronhaverso_cartoon.png";
-///import NoronhaversoRealist from '../../../Assets/Images/Noronhaverso_realist.png';
+import "./Header.css";
+import noronhaversoCartoon from "../../assets/images/Noronhaverso_cartoon.png";
 
 function Header({ isDarkMode, onToggleTheme }) {
+  const themeLabel = isDarkMode ? "Ativar modo claro" : "Ativar modo escuro";
+
   return (
-    <header className="header-box">
-      <img
-        src={NoronhaversoCartoon}
-        alt="Noronhaverso cartoon"
-        className="noronha1"
-      />
-      <section className="headerNavegation">
-        <nav className="nav-box">
-          <ul className="list">
-            <li>Sobre o projeto</li>
-            <li>Sugestões</li>
-            <li>Modelos 3d</li>
-            <li>Colaboradores</li>
+    <header className="header">
+      <section className="header_brand">
+        <img
+          src={noronhaversoCartoon}
+          alt="Noronhaverso cartoon"
+          className="header_logo"
+        />
+      </section>
+
+      <section className="header_menu">
+        <nav>
+          <ul className="header_list">
+            <li>
+              <NavLink to="/about-this-project">Sobre o projeto</NavLink>
+            </li>
+            <li>
+              <NavLink to="/sugestoes">Sugestões</NavLink>
+            </li>
+            <li>
+              <NavLink to="/modelos-3d">Modelos 3D</NavLink>
+            </li>
+            <li>
+              <NavLink to="/colaboradores">Colaboradores</NavLink>
+            </li>
           </ul>
-          <button
-            type="button"
-            className="theme-toggle-button"
-            onClick={onToggleTheme}
-            aria-label={isDarkMode ? "Ativar modo claro" : "Ativar modo escuro"}
-          >
-            {isDarkMode ? <FiSun /> : <FiMoon />}
-          </button>
         </nav>
+
+        <button
+          type="button"
+          className="header_theme_toggle"
+          onClick={onToggleTheme}
+          aria-label={themeLabel}
+        >
+          {isDarkMode ? <FiSun /> : <FiMoon />}
+        </button>
       </section>
     </header>
   );

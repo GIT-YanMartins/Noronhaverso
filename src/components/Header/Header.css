@@ -1,72 +1,66 @@
-ul li {
-  text-decoration: none;
-  list-style: none;
-  font-size: 0.8rem;
-}
-.list {
+.header {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border: dashed 2px currentColor;
-  text-transform: uppercase;
-  margin: 0;
-  padding: 0.5rem;
-}
-
-.header-box {
-  width: 100%;
-  height: 30%;
-  border: 2px solid currentColor;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   padding: 0.75rem 1rem;
+  border-bottom: 2px solid currentColor;
 }
-.nav-box {
-  width: 80%;
-  height: 100%;
+
+.header_brand {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border: 2px solid currentColor;
-  gap: 0.75rem;
-  padding: 0.5rem;
-}
-.list li:hover {
-  cursor: pointer;
-  font-weight: bold;
-  transition: color 0.8s ease;
 }
 
-.headerNavegation {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  border: 2px solid currentColor;
-  padding: 0.5rem;
-}
-.noronha1 {
+.header_logo {
   width: 6vw;
+  min-width: 48px;
+  height: auto;
 }
 
-.theme-toggle-button {
+.header_menu {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.header_list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-transform: uppercase;
+}
+
+.header_list a {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.header_list a:hover,
+.header_list a.active {
+  font-weight: bold;
+}
+
+.header_theme_toggle {
   width: 2.5rem;
   height: 2.5rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /*border: 1px solid currentColor;*/
-  /*border-radius: 999px;*/
   border: none;
   background: transparent;
   color: inherit;
   cursor: pointer;
   font-size: 1.2rem;
-  flex-shrink: 0;
 }
 
-.theme-toggle-button:hover {
+.header_theme_toggle:hover {
   opacity: 0.85;
 }

@@ -1,17 +1,19 @@
-.App {
+.app {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   text-align: center;
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
 }
 
-.App.theme-light {
+.app.theme_light {
   background-color: #f7f8fc;
   color: #121212;
 }
 
-.App.theme-dark {
+.app.theme_dark {
   background-color: #151a23;
   color: #f2f4f8;
 }

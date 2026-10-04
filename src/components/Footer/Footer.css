@@ -1,4 +1,8 @@
-.footer-box {
+.footer {
   width: 100%;
-  border: 2px dashed tomato;
+  border-top: 2px solid currentColor;
+}
+
+.footer_content {
+  padding: 1rem;
 }

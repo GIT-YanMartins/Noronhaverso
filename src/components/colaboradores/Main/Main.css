@@ -1,0 +1,27 @@
+.collaborators {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.collaborators .class_01,
+.collaborators .class_02,
+.collaborators .class_03 {
+  width: 100%;
+  min-height: 50%;
+  border-radius: 10px;
+}
+
+.collaborators .class_01 {
+  border: 3px solid #2563eb;
+}
+
+.collaborators .class_02 {
+  border: 3px solid #16a34a;
+}
+
+.collaborators .class_03 {
+  border: 3px solid #dc2626;
+}

@@ -1,0 +1,27 @@
+.models_3d {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.models_3d .class_01,
+.models_3d .class_02,
+.models_3d .class_03 {
+  width: 100%;
+  min-height: 50%;
+  border-radius: 10px;
+}
+
+.models_3d .class_01 {
+  border: 3px solid #2563eb;
+}
+
+.models_3d .class_02 {
+  border: 3px solid #16a34a;
+}
+
+.models_3d .class_03 {
+  border: 3px solid #dc2626;
+}
