@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geoturismo — Fernando de Noronha</title>
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 100%; height: 100%; overflow: hidden; }
+      #map { width: 100%; height: 100%; }
+
+      /* Ocultar atribuição (deixar bem pequena) */
+      .leaflet-control-attribution {
+        font-size: 9px;
+        opacity: 0.5;
+        background: rgba(0,0,0,0.4) !important;
+        color: #ccc !important;
+      }
+      .leaflet-control-attribution a { color: #aaa !important; }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      // ── Fernando de Noronha: lat -3.8567, lon -32.4282 ──
+      const map = L.map("map", {
+        center: [-3.8567, -32.4282],
+        zoom: 13,
+        zoomControl: true,
+        attributionControl: true,
+      });
+
+      // ── Camada de satélite: ESRI World Imagery (gratuita, sem autenticação) ──
+      L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        {
+          maxZoom: 19,
+          attribution:
+            "© Esri, Maxar, Earthstar Geographics, CNES/Airbus DS, USDA FSA, USGS",
+        }
+      ).addTo(map);
+
+      // ── Camada de rótulos/nomes (sobreposta ao satélite) ──
+      L.tileLayer(
+        "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+        {
+          maxZoom: 19,
+          opacity: 0.85,
+          attribution: "",
+        }
+      ).addTo(map);
+    </script>
+  </body>
+</html>
