@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 .about_this_project {
   width: 100%;
   flex: 1;
@@ -20,7 +21,7 @@
 
 .about_this_project .class_01 {
   border: 3px solid #2563eb;
-  height: 50vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -32,9 +33,16 @@
 
 .about_this_project .class_02 {
   border: 3px solid #16a34a;
-  height: 50vh;
+  height: 70vh;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+}
+
+.class_02 .class_02_asides {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  width: 100%;
 }
 
 .class_02 .class_02_01 {

@@ -1,27 +1,83 @@
 .collaborators {
+  position: relative;
+  isolation: isolate;
   width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
 }
 
-.collaborators .class_01,
-.collaborators .class_02,
-.collaborators .class_03 {
-  width: 100%;
+.collaborators::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.1;
+}
+
+.app.theme_light .collaborators::before {
+  background-image: url("../../../assets/images/Topography_white.jpg");
+}
+
+.app.theme_dark .collaborators::before {
+  background-image: url("../../../assets/images/Topography_black.jpg");
+}
+.collaborators .Leticia,
+.collaborators .Yan,
+.collaborators .Giovane {
+  width: 80%;
   min-height: 50%;
-  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.collaborators .class_01 {
-  border: 3px solid #2563eb;
+.collaborators .Leticia {
+  margin-top: 6vh;
 }
 
-.collaborators .class_02 {
-  border: 3px solid #16a34a;
+.collaborators .Leticia,
+.collaborators .Giovane {
+  flex-direction: row-reverse;
 }
 
-.collaborators .class_03 {
-  border: 3px solid #dc2626;
+.collaborators .Yan {
+  flex-direction: row;
+}
+
+.collaborators .leticia_jpeg,
+.collaborators .yan_jpeg,
+.collaborators .giovane_jpeg {
+  width: 20vw;
+  height: 36vh;
+  flex-shrink: 0;
+  border: solid 3px red;
+  border-radius: 50%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.collaborators .leticia_about,
+.collaborators .yan_about,
+.collaborators .giovane_about {
+  width: 60vw;
+  height: 100%;
+  margin: 2vw;
+  max-height: 60vh;
+  overflow-y: auto;
+  border: dashed 3px aquamarine;
+}
+
+.collaborators .leticia_about p,
+.collaborators .yan_about p,
+.collaborators .giovane_about p {
+  margin: 0;
+  text-align: justify;
 }

@@ -23,7 +23,7 @@ function Header({ isDarkMode, onToggleTheme }) {
               <NavLink to="/about-this-project">Sobre o projeto</NavLink>
             </li>
             <li>
-              <NavLink to="/sugestoes">Sugestões</NavLink>
+              <NavLink to="/geoturismo">Geoturismo virtual</NavLink>
             </li>
             <li>
               <NavLink to="/modelos-3d">Modelos 3D</NavLink>

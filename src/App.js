@@ -4,9 +4,10 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import AboutThisProject from "./components/about this project/Main/Main";
-import Suggestions from "./components/sugestoes/Main/Main";
+
 import Models3d from "./components/modelos 3d/Main/Main";
 import Collaborators from "./components/colaboradores/Main/Main";
+import Geoturismo from "./components/geoturismo/Main/Main";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -23,7 +24,8 @@ function App() {
         <Route path="/" element={<Navigate to="/modelos-3d" replace />} />
         <Route path="/modelos-3d" element={<Models3d />} />
         <Route path="/about-this-project" element={<AboutThisProject />} />
-        <Route path="/sugestoes" element={<Suggestions />} />
+
+        <Route path="/geoturismo" element={<Geoturismo />} />
         <Route path="/colaboradores" element={<Collaborators />} />
         <Route
           path="/home"
