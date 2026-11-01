@@ -31,7 +31,40 @@ A construção da aplicação web é fundamentada no uso integrado de tecnologia
 
 ## 🎓 Vínculo Institucional
 
+O Projeto "Noronhaverso: Geoturismo virtual e divulgação científica em Fernando de Noronha" foi idealizado e é coordenado pela geóloga e pesquisadora Profa. Dra. Letícia Freitas Guimarães (IGEO/UFBA). As atividades em campo foram financiadas pela FAPESB (Projeto PPP n° 0035/2024), FAPERJ e CNPQ, contando com o apoio do ICMBio.
+
+Estudantes de Iniciação Científica (IC) e Pós-graduação que compõem a equipe recebem bolsa de estudo PIBIC, PIBIEx e FAPESB.
+
 - **Instituição:** Projeto desenvolvido na Universidade Federal da Bahia.
 - **Departamento:** Vinculado à Pró-Reitoria de Extensão, Arte e Cultura.
 - **Orientação:** Proponente Letícia Freitas Guimarães.
 - **Programa:** Plano de trabalho de estudante bolsista de extensão. Parte integrante do edital PIBIEx 2026-2027.
+
+## Idealização e coordenação
+- Letícia Freitas Guimarães
+
+## Captação de imagens
+- Daíse Araújo dos Santos
+- Francisco Manoel Wohnrath Tognoli
+- Gustavo Rabelo Mariano
+- Letícia Freitas Guimarães
+- Marcelo Freitas Guimarães
+
+## Modelos tridimensionais
+- Carlos Mazoca
+- Giovane Araújo Carneiro
+- Letícia Freitas Guimarães
+
+## Site
+- Letícia Freitas Guimarães
+- Yan Gabriel Martins
+
+## Pesquisadores envolvidos
+- Anderson Costa dos Santos
+- Carlos Mazoca
+- Daíse Araújo dos Santos
+- Francisco Manoel Wohnrath Tognoli
+- Gustavo Rabelo Mariano
+- Letícia Freitas Guimarães
+- Marcelo Freitas Guimarães
+- Yan Gabriel Martins
