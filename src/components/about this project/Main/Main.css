@@ -6,35 +6,150 @@
 
 .about_this_project {
   width: 100%;
+  border: solid 3px yellow;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.about_this_project .class_01,
-.about_this_project .class_02,
-.about_this_project .class_03 {
-  width: 100%;
-  border-radius: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .about_this_project .class_01 {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
   border: 3px solid #2563eb;
   height: 80vh;
+  min-height: 80vh;
+  flex-shrink: 0;
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: flex-end;
+  padding-bottom: 2.5vh;
 }
 
-.about_this_project .class_01 p {
-  border: 3px solid red;
+.class_01 .class_01_bg_video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
 }
+
+.class_01 .class_01_gradient_overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: calc(55% - 16px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gradiente para o Tema Claro (branco/suave) */
+.class_01 .class_01_gradient_overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(247, 248, 252, 0.98) 0%,
+    rgba(247, 248, 252, 0.85) 45%,
+    rgba(247, 248, 252, 0.35) 75%,
+    transparent 100%
+  );
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Gradiente para o Tema Escuro (escuro/preto) */
+.class_01 .class_01_gradient_overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(21, 26, 35, 0.98) 0%,
+    rgba(21, 26, 35, 0.88) 45%,
+    rgba(21, 26, 35, 0.4) 75%,
+    transparent 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Alternância suave entre temas para o gradiente */
+.app.theme_dark .class_01 .class_01_gradient_overlay::before {
+  opacity: 0;
+}
+
+.app.theme_dark .class_01 .class_01_gradient_overlay::after {
+  opacity: 1;
+}
+
+.class_01 h1,
+.class_01 h2,
+.class_01 .class_01_container {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.class_01 h1 {
+  margin-bottom: 1.5vh;
+  font-weight: 700;
+}
+
+.class_01 .class_01_container {
+  width: 60vw;
+  height: 12vh;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.class_01 .class_01_container p {
+  text-align: justify;
+}
+
+/* Cores no Tema Claro */
+.app.theme_light .class_01 h1,
+.app.theme_light .class_01 h2,
+.app.theme_light .class_01 .class_01_container,
+.app.theme_light .class_01 .class_01_container p {
+  color: #121212;
+}
+
+.app.theme_light .class_01 .class_01_container {
+  border: 2px solid #121212;
+}
+
+/* Cores no Tema Escuro */
+.app.theme_dark .class_01 h1,
+.app.theme_dark .class_01 h2,
+.app.theme_dark .class_01 .class_01_container,
+.app.theme_dark .class_01 .class_01_container p {
+  color: #f2f4f8;
+}
+
+.app.theme_dark .class_01 .class_01_container {
+  border: 2px solid #f2f4f8;
+}
+
+
 
 .about_this_project .class_02 {
   border: 3px solid #16a34a;
-  height: 70vh;
+  width: 100%;
+  height: 500px;
+  min-height: 500px;
+  flex-shrink: 0;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
 }
 
@@ -43,24 +158,72 @@
   flex-direction: row;
   flex: 1;
   width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
-.class_02 .class_02_01 {
+.class_02 .class_02_01,
+.class_02 .class_02_02 {
   border: 3px dashed aquamarine;
-  width: 50%;
-  height: 100%;
+  width: 22%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  padding: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.class_02 .class_02_01 h3 {
-  color: black;
+.class_02 .class_02_01_hover,
+.class_02 .class_02_02_hover {
+  border: 3px dashed coral;
+  width: 28%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.class_02 .class_02_01_hover {
+  background-image: url("../../../assets/images/Geoturismo_demo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  overflow: hidden;
+}
+
+.class_02_asides:has(.class_02_01:hover) .class_02_01_hover,
+.class_02 .class_02_01_hover:hover {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.class_02_asides:has(.class_02_02:hover) .class_02_02_hover,
+.class_02 .class_02_02_hover:hover {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.class_02 .class_02_01 h3,
+.class_02 .class_02_02 h3,
+.class_02 .class_02_02_hover h3 {
+  color: inherit;
   text-align: center;
+  transition: color 0.3s ease;
 }
 
 .about_this_project .class_03 {
   border: 3px solid #dc2626;
   height: 50vh;
+  width: 20vw;
 }

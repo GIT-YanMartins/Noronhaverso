@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #  Noronhaverso: Geoturismo Virtual e Divulgação Geocientífica de Fernando de Noronha
+=======
+# Noronhaverso: Geoturismo Virtual e Divulgação Geocientífica de Fernando de Noronha
+>>>>>>> 4d77dba (:wrench: V1.2.1- Foram ajustados todos os efeitos visuais. Além disso, foram adicionados: 01) vídeo temático feito pela equipe durante o mapeamento de campo; 02) modelos 3D feitos por Giovane Carneiro, modelos estes que serão encorporados nas fotografias panorâmicas para o geoturismo virtual.)
 
 [![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://git-yanmartins.github.io/Noronhaverso/)
 [![Instituição](https://img.shields.io/badge/Instituição-UFBA-blue?style=for-the-badge)](#)
@@ -9,7 +13,11 @@ O presente projeto insere-se no contexto de desenvolvimento de uma aplicação w
 
 ---
 
+<<<<<<< HEAD
 ##  Funcionalidades Principais
+=======
+## Funcionalidades Principais
+>>>>>>> 4d77dba (:wrench: V1.2.1- Foram ajustados todos os efeitos visuais. Além disso, foram adicionados: 01) vídeo temático feito pela equipe durante o mapeamento de campo; 02) modelos 3D feitos por Giovane Carneiro, modelos estes que serão encorporados nas fotografias panorâmicas para o geoturismo virtual.)
 
 - **Exploração Imersiva:** O usuário terá acesso a imagens de satélite, fotomosaicos, fotos e vídeos aéreos.
 - **Visualização 3D:** A plataforma integra modelos digitais de terreno e modelos 3D. Esses modelos permitem a visualização imersiva de afloramentos geológicos em alta resolução.
@@ -17,7 +25,7 @@ O presente projeto insere-se no contexto de desenvolvimento de uma aplicação w
 
 ---
 
-## 🛠️ Tecnologias e Metodologia
+## Tecnologias e Metodologia
 
 A construção da aplicação web é fundamentada no uso integrado de tecnologias padrão de desenvolvimento front-end.
 
@@ -29,7 +37,7 @@ A construção da aplicação web é fundamentada no uso integrado de tecnologia
 
 ---
 
-## 🎓 Vínculo Institucional
+## Vínculo Institucional
 
 O Projeto "Noronhaverso: Geoturismo virtual e divulgação científica em Fernando de Noronha" foi idealizado e é coordenado pela geóloga e pesquisadora Profa. Dra. Letícia Freitas Guimarães (IGEO/UFBA). As atividades em campo foram financiadas pela FAPESB (Projeto PPP n° 0035/2024), FAPERJ e CNPQ, contando com o apoio do ICMBio.
 

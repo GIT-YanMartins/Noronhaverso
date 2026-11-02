@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { FiMoon, FiSun } from "react-icons/fi";
 import "./Header.css";
-import noronhaversoCartoon from "../../assets/images/Noronhaverso_cartoon.png";
+import logoImage from "../../assets/images/logo.png";
 
 function Header({ isDarkMode, onToggleTheme }) {
   const themeLabel = isDarkMode ? "Ativar modo claro" : "Ativar modo escuro";
@@ -10,8 +10,8 @@ function Header({ isDarkMode, onToggleTheme }) {
     <header className="header">
       <section className="header_brand">
         <img
-          src={noronhaversoCartoon}
-          alt="Noronhaverso cartoon"
+          src={logoImage}
+          alt="Noronhaverso"
           className="header_logo"
         />
       </section>
