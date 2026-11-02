@@ -1,64 +1,777 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Geoturismo — Fernando de Noronha</title>
 
-    <!-- Leaflet CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geoturismo — Fernando de Noronha</title>
 
-    <style>
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html, body { width: 100%; height: 100%; overflow: hidden; }
-      #map { width: 100%; height: 100%; }
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-      /* Ocultar atribuição (deixar bem pequena) */
-      .leaflet-control-attribution {
-        font-size: 9px;
-        opacity: 0.5;
-        background: rgba(0,0,0,0.4) !important;
-        color: #ccc !important;
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #map {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Ocultar atribuição (deixar bem pequena) */
+    .leaflet-control-attribution {
+      font-size: 9px;
+      opacity: 0.5;
+      background: rgba(0, 0, 0, 0.4) !important;
+      color: #ccc !important;
+    }
+
+    .leaflet-control-attribution a {
+      color: #aaa !important;
+    }
+
+    /* ── Marcador Animado / Geoponto ── */
+    .geo-marker-wrapper {
+      background: transparent;
+      border: none;
+    }
+
+    .geo-marker {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+    }
+
+    .geo-marker__pulse {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.45);
+      animation: pulse-ring 2s infinite ease-out;
+    }
+
+    .geo-marker__dot {
+      position: relative;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #2563eb;
+      border: 3px solid #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .geo-marker:hover .geo-marker__dot {
+      transform: scale(1.3);
+      background: #1d4ed8;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.6);
+        opacity: 1;
       }
-      .leaflet-control-attribution a { color: #aaa !important; }
-    </style>
-  </head>
-  <body>
-    <div id="map"></div>
 
-    <script>
-      // ── Fernando de Noronha: lat -3.8567, lon -32.4282 ──
-      const map = L.map("map", {
-        center: [-3.8567, -32.4282],
-        zoom: 13,
-        zoomControl: true,
-        attributionControl: true,
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+
+    /* ── Popup Customizado ── */
+    .custom-leaflet-popup .leaflet-popup-content-wrapper {
+      background: rgba(21, 26, 35, 0.95);
+      backdrop-filter: blur(8px);
+      color: #f2f4f8;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      padding: 4px;
+    }
+
+    .custom-leaflet-popup .leaflet-popup-tip {
+      background: rgba(21, 26, 35, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .custom-leaflet-popup .leaflet-popup-close-button {
+      color: #aaa !important;
+      padding: 8px !important;
+    }
+
+    .custom-leaflet-popup .leaflet-popup-close-button:hover {
+      color: #fff !important;
+    }
+
+    .geo-popup {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      padding: 6px;
+    }
+
+    .geo-popup__tag {
+      display: inline-block;
+      background: transparent;
+      color: #9ca3af;
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 0;
+      margin-bottom: 4px;
+    }
+
+    .geo-popup__title {
+      margin: 0 0 6px 0;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .geo-popup__body p {
+      margin: 0 0 8px 0;
+      font-size: 12px;
+      line-height: 1.5;
+      color: #d1d5db;
+    }
+
+    .geo-popup__coords {
+      font-size: 11px;
+      color: #9ca3af;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 6px;
+    }
+
+    .geo-popup__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #f2f4f8;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 500;
+      text-align: center;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .geo-popup__btn:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.4);
+      transform: none;
+      box-shadow: none;
+    }
+
+    .geo-popup__btn:active {
+      background: rgba(255, 255, 255, 0.08);
+      transform: none;
+    }
+
+    /* ── Tooltip Customizada ── */
+    .geo-tooltip {
+      background: rgba(21, 26, 35, 0.92) !important;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.2) !important;
+      border-radius: 6px !important;
+      font-size: 12px !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    /* ── Modal Pop-up do Modelo 3D ── */
+    .geo-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 15, 25, 0.82);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      animation: modalFadeIn 0.25s ease;
+    }
+
+    .geo-modal-backdrop.is-open {
+      display: flex;
+    }
+
+    .geo-modal-container {
+      background: #151a23;
+      color: #f2f4f8;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      width: 92vw;
+      max-width: 860px;
+      max-height: 92vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      animation: modalZoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .geo-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .geo-modal-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    .geo-modal-close {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .geo-modal-close:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .geo-modal-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-y: auto;
+    }
+
+    .sketchfab-embed-wrapper {
+      width: 100%;
+      height: 480px;
+      max-height: 62vh;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .sketchfab-embed-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .sketchfab-embed-wrapper+p {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      text-align: center;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes modalZoomIn {
+      from {
+        transform: scale(0.92);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+
+  <!-- Pop-up Modal do Modelo 3D (Sketchfab) -->
+  <div id="modal-modelo-3d" class="geo-modal-backdrop" onclick="tratarCliqueBackdrop(event)">
+    <div class="geo-modal-container" onclick="event.stopPropagation()">
+      <div class="geo-modal-header">
+        <h3 class="geo-modal-title">
+          <span></span>
+          <span id="modal-3d-title">Modelo 3D</span>
+        </h3>
+        <button type="button" class="geo-modal-close" onclick="fecharModalModelo3D()" aria-label="Fechar pop-up">
+          &times;
+        </button>
+      </div>
+      <div class="geo-modal-body">
+        <div class="sketchfab-embed-wrapper">
+          <iframe id="modal-3d-iframe" title="Modelo 3D" frameborder="0" allowfullscreen mozallowfullscreen="true"
+            webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
+            execution-while-out-of-viewport execution-while-not-rendered web-share src="">
+          </iframe>
+        </div>
+        <p style="font-size: 13px; font-weight: normal; margin: 10px 5px 4px 5px; color: #a0aec0;">
+          <a id="modal-3d-credit-link" href="#" target="_blank" rel="nofollow"
+            style="font-weight: bold; color: #1CAAD9; text-decoration: none;">
+            Modelo 3D
+          </a>
+          by
+          <a id="modal-3d-author-link" href="https://sketchfab.com/Giovane-Carneiro" target="_blank" rel="nofollow"
+            style="font-weight: bold; color: #1CAAD9; text-decoration: none;">
+            Giovane-Carneiro
+          </a>
+          on
+          <a href="https://sketchfab.com" target="_blank" rel="nofollow"
+            style="font-weight: bold; color: #1CAAD9; text-decoration: none;">
+            Sketchfab
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── Fernando de Noronha: lat -3.8567, lon -32.4282 ──
+    const map = L.map("map", {
+      center: [-3.8567, -32.4282],
+      zoom: 13,
+      zoomControl: true,
+      attributionControl: true,
+    });
+
+    // ── Camada de satélite: ESRI World Imagery (gratuita, sem autenticação) ──
+    L.tileLayer(
+      "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+      {
+        maxZoom: 19,
+        attribution:
+          "© Esri, Maxar, Earthstar Geographics, CNES/Airbus DS, USDA FSA, USGS",
+      }
+    ).addTo(map);
+
+    // ── Camada de rótulos/nomes (sobreposta ao satélite) ──
+    L.tileLayer(
+      "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+      {
+        maxZoom: 19,
+        opacity: 0.85,
+        attribution: "",
+      }
+    ).addTo(map);
+
+    // ── Geossítio: Morro Dois Irmãos ──
+    const morroDoisIrmaosCoords = [-3.8489, -32.4422];
+
+    // Ícone com pulso animado para destacar o geoponto
+    const geoIcon = L.divIcon({
+      className: "geo-marker-wrapper",
+      html: `
+          <div class="geo-marker">
+            <div class="geo-marker__pulse"></div>
+            <div class="geo-marker__dot"></div>
+          </div>
+        `,
+      iconSize: [36, 36],
+      iconAnchor: [18, 18],
+      popupAnchor: [0, -18],
+    });
+
+    const morroDoisIrmaosMarker = L.marker(morroDoisIrmaosCoords, {
+      icon: geoIcon,
+      title: "Morro Dois Irmãos",
+    }).addTo(map);
+
+    // Dica flutuante ao passar o mouse
+    morroDoisIrmaosMarker.bindTooltip(
+      "<strong>Morro Dois Irmãos</strong><br><small>Clique para ver detalhes e o modelo 3D</small>",
+      {
+        direction: "top",
+        offset: [0, -18],
+        className: "geo-tooltip",
+      }
+    );
+
+    // Caixa informativa aberta ao clicar
+    morroDoisIrmaosMarker.bindPopup(
+      `
+        <div class="geo-popup">
+          <div class="geo-popup__header">
+            <span class="geo-popup__tag">Geossítio</span>
+            <h3 class="geo-popup__title">Morro Dois Irmãos</h3>
+          </div>
+          <div class="geo-popup__body">
+            <p>
+              Emblemática formação vulcânica composta por duas elevações gêmeas (plugs/domos fonolíticos) 
+              pertencentes à <strong>Formação Remédios</strong>. Erguem-se sobre o mar entre a Baía dos Porcos 
+              e a Praia da Cacimba do Padre.
+            </p>
+            <div class="geo-popup__coords">
+              <span> 3°50'56" S, 32°26'32" W</span>
+            </div>
+            <button
+              type="button"
+              class="geo-popup__btn"
+              onclick="acessarGeoturismoVirtual()"
+            >
+              <span>Modelo 3D</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      `,
+      {
+        maxWidth: 290,
+        className: "custom-leaflet-popup",
+      }
+    );
+
+    // Função de disparo para o geoturismo virtual
+    function acessarGeoturismoVirtual() {
+      if (window.parent) {
+        window.parent.postMessage(
+          {
+            type: "ACESSAR_GEOTURISMO_VIRTUAL",
+            spot: "morro-dois-irmaos",
+            name: "Morro Dois Irmãos",
+          },
+          "*"
+        );
+      }
+      console.log("Acessando geoturismo virtual: Morro Dois Irmãos");
+    }
+
+    // Efeito de aproximação suave ao clicar
+    morroDoisIrmaosMarker.on("click", () => {
+      map.flyTo(morroDoisIrmaosCoords, 16, {
+        duration: 1.2,
       });
+    });
 
-      // ── Camada de satélite: ESRI World Imagery (gratuita, sem autenticação) ──
-      L.tileLayer(
-        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        {
-          maxZoom: 19,
-          attribution:
-            "© Esri, Maxar, Earthstar Geographics, CNES/Airbus DS, USDA FSA, USGS",
-        }
-      ).addTo(map);
+    // ── Geossítio / Patrimônio: Forte Nossa Senhora dos Remédios ──
+    const forteRemediosCoords = [-3.8383, -32.4103];
 
-      // ── Camada de rótulos/nomes (sobreposta ao satélite) ──
-      L.tileLayer(
-        "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
-        {
-          maxZoom: 19,
-          opacity: 0.85,
-          attribution: "",
-        }
-      ).addTo(map);
-    </script>
-  </body>
+    const forteRemediosMarker = L.marker(forteRemediosCoords, {
+      icon: geoIcon,
+      title: "Forte Nossa Senhora dos Remédios",
+    }).addTo(map);
+
+    // Dica flutuante ao passar o mouse
+    forteRemediosMarker.bindTooltip(
+      "<strong>Forte Nossa Senhora dos Remédios</strong><br><small>Clique para ver detalhes e o Modelo 3D</small>",
+      {
+        direction: "top",
+        offset: [0, -18],
+        className: "geo-tooltip",
+      }
+    );
+
+    // Caixa informativa aberta ao clicar
+    forteRemediosMarker.bindPopup(
+      `
+      <div class="geo-popup">
+        <div class="geo-popup__header">
+          <span class="geo-popup__tag">Patrimônio Histórico</span>
+          <h3 class="geo-popup__title">Forte Nossa Senhora dos Remédios</h3>
+        </div>
+        <div class="geo-popup__body">
+          <p>
+            Principal estrutura defensiva erguida no século XVIII sobre o Morro dos Remédios. 
+            Constitui um dos mais emblemáticos patrimônios históricos e geológicos de Fernando de Noronha, 
+            com vista panorâmica da Vila dos Remédios e do oceano.
+          </p>
+          <div class="geo-popup__coords">
+            <span> 3°50'18" S, 32°24'37" W</span>
+          </div>
+          <button
+            type="button"
+            class="geo-popup__btn"
+            onclick="abrirModalModelo3DForte()"
+          >
+            <span>Modelo 3D</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    `,
+      {
+        maxWidth: 290,
+        className: "custom-leaflet-popup",
+      }
+    );
+
+    // Efeito de aproximação suave ao clicar no forte
+    forteRemediosMarker.on("click", () => {
+      map.flyTo(forteRemediosCoords, 16, {
+        duration: 1.2,
+      });
+    });
+
+    // ── Geossítio / Falésia / Porto: Ponta da Biboca (Porto) ──
+    const pontaBibocaCoords = [-3.8366, -32.4045];
+
+    const pontaBibocaMarker = L.marker(pontaBibocaCoords, {
+      icon: geoIcon,
+      title: "Ponta da Biboca / Porto",
+    }).addTo(map);
+
+    // Dica flutuante ao passar o mouse
+    pontaBibocaMarker.bindTooltip(
+      "<strong>Ponta da Biboca / Porto</strong><br><small>Clique para ver detalhes e o Modelo 3D</small>",
+      {
+        direction: "top",
+        offset: [0, -18],
+        className: "geo-tooltip",
+      }
+    );
+
+    // Caixa informativa aberta ao clicar
+    pontaBibocaMarker.bindPopup(
+      `
+      <div class="geo-popup">
+        <div class="geo-popup__header">
+          <span class="geo-popup__tag">Geossítio</span>
+          <h3 class="geo-popup__title">Ponta da Biboca / Porto</h3>
+        </div>
+        <div class="geo-popup__body">
+          <p>
+            Imponente falésia costeira e promontório rochoso do Mar de Dentro, 
+            situada entre a Fortaleza dos Remédios e o Porto de Santo Antônio. 
+            Apresenta rochas vulcânicas escuras sob constante dinâmica erosiva das ondas marinhas.
+          </p>
+          <div class="geo-popup__coords">
+            <span>3°50'12" S, 32°24'16" W</span>
+          </div>
+          <button
+            type="button"
+            class="geo-popup__btn"
+            onclick="abrirModalModelo3DPorto()"
+          >
+            <span>Modelo 3D</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    `,
+      {
+        maxWidth: 290,
+        className: "custom-leaflet-popup",
+      }
+    );
+
+    // Efeito de aproximação suave ao clicar
+    pontaBibocaMarker.on("click", () => {
+      map.flyTo(pontaBibocaCoords, 16, {
+        duration: 1.2,
+      });
+    });
+
+    // ── Geossítio / Falésia / Trilha: Capim Açu ──
+    const capimAcuCoords = [-3.8777, -32.4619];
+
+    const capimAcuMarker = L.marker(capimAcuCoords, {
+      icon: geoIcon,
+      title: "Capim Açu",
+    }).addTo(map);
+
+    // Dica flutuante ao passar o mouse
+    capimAcuMarker.bindTooltip(
+      "<strong>Capim Açu</strong><br><small>Clique para ver detalhes e o Modelo 3D</small>",
+      {
+        direction: "top",
+        offset: [0, -18],
+        className: "geo-tooltip",
+      }
+    );
+
+    // Caixa informativa aberta ao clicar
+    capimAcuMarker.bindPopup(
+      `
+      <div class="geo-popup">
+        <div class="geo-popup__header">
+          <span class="geo-popup__tag">Geossítio</span>
+          <h3 class="geo-popup__title">Capim Açu</h3>
+        </div>
+        <div class="geo-popup__body">
+          <p>
+            Localizado no extremo sudoeste de Fernando de Noronha, o Capim Açu abriga imponentes costões rochosos e falésias vulcânicas sobre o Mar de Fora, constituindo um dos mais espetaculares pontos da geodiversidade do arquipélago.
+          </p>
+          <div class="geo-popup__coords">
+            <span>3°52'40" S, 32°27'43" W</span>
+          </div>
+          <button
+            type="button"
+            class="geo-popup__btn"
+            onclick="abrirModalModelo3DCapimAcu()"
+          >
+            <span>Modelo 3D</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </button>
+        </div>
+      </div>
+    `,
+      {
+        maxWidth: 290,
+        className: "custom-leaflet-popup",
+      }
+    );
+
+    // Efeito de aproximação suave ao clicar
+    capimAcuMarker.on("click", () => {
+      map.flyTo(capimAcuCoords, 16, {
+        duration: 1.2,
+      });
+    });
+
+    // ── Funções de controle do Pop-up / Modal do Modelo 3D ──
+    function abrirModalModelo3D(config) {
+      const modal = document.getElementById("modal-modelo-3d");
+      const titleSpan = document.getElementById("modal-3d-title");
+      const iframe = document.getElementById("modal-3d-iframe");
+      const creditLink = document.getElementById("modal-3d-credit-link");
+      const authorLink = document.getElementById("modal-3d-author-link");
+
+      if (titleSpan) titleSpan.textContent = config.title;
+      if (iframe) {
+        iframe.title = config.title;
+        iframe.src = config.embedUrl;
+      }
+      if (creditLink) {
+        creditLink.textContent = config.creditTitle || config.title;
+        creditLink.href = config.creditUrl || "#";
+      }
+      if (authorLink) {
+        authorLink.textContent = config.authorName || "Giovane-Carneiro";
+        authorLink.href = config.authorUrl || "https://sketchfab.com/Giovane-Carneiro";
+      }
+
+      if (modal) {
+        modal.classList.add("is-open");
+      }
+
+      if (window.parent) {
+        window.parent.postMessage(
+          {
+            type: "ABRIR_MODELO_3D",
+            spot: config.spotId,
+            name: config.title,
+          },
+          "*"
+        );
+      }
+    }
+
+    function abrirModalModelo3DForte() {
+      abrirModalModelo3D({
+        title: "Forte Nossa Senhora dos Remédios — Modelo 3D",
+        embedUrl: "https://sketchfab.com/models/49f2ecb7919a4b3f81cb03e771440b43/embed",
+        creditTitle: "Forte Nossa Senhora dos Remédios",
+        creditUrl: "https://sketchfab.com/3d-models/forte-nossa-senhora-dos-remedios-49f2ecb7919a4b3f81cb03e771440b43",
+        authorName: "Giovane-Carneiro",
+        authorUrl: "https://sketchfab.com/Giovane-Carneiro",
+        spotId: "forte-nossa-senhora-dos-remedios",
+      });
+    }
+
+    function abrirModalModelo3DPorto() {
+      abrirModalModelo3D({
+        title: "Porto — Modelo 3D",
+        embedUrl: "https://sketchfab.com/models/5076caac1a394ff79e87c151bfff8e53/embed",
+        creditTitle: "Porto",
+        creditUrl: "https://sketchfab.com/3d-models/porto-5076caac1a394ff79e87c151bfff8e53",
+        authorName: "Giovane-Carneiro",
+        authorUrl: "https://sketchfab.com/Giovane-Carneiro",
+        spotId: "porto-biboca",
+      });
+    }
+
+    function abrirModalModelo3DCapimAcu() {
+      abrirModalModelo3D({
+        title: "Capim Açu — Modelo 3D",
+        embedUrl: "https://sketchfab.com/models/961d60030a0f4b028aefd2fedd6faa0a/embed",
+        creditTitle: "Capim_Acu",
+        creditUrl: "https://sketchfab.com/3d-models/capim-acu-961d60030a0f4b028aefd2fedd6faa0a",
+        authorName: "Giovane-Carneiro",
+        authorUrl: "https://sketchfab.com/Giovane-Carneiro",
+        spotId: "capim-acu",
+      });
+    }
+
+    function fecharModalModelo3D() {
+      const modal = document.getElementById("modal-modelo-3d");
+      const iframe = document.getElementById("modal-3d-iframe");
+      if (modal) {
+        modal.classList.remove("is-open");
+      }
+      if (iframe) {
+        iframe.src = "";
+      }
+    }
+
+    function tratarCliqueBackdrop(event) {
+      if (event.target.id === "modal-modelo-3d") {
+        fecharModalModelo3D();
+      }
+    }
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        fecharModalModelo3D();
+      }
+    });
+  </script>
+</body>
+
 </html>
