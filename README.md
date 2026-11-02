@@ -1,4 +1,4 @@
-# 🌌 Noronhaverso: Geoturismo Virtual e Divulgação Geocientífica de Fernando de Noronha
+#  Noronhaverso: Geoturismo Virtual e Divulgação Geocientífica de Fernando de Noronha
 
 [![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-2ea44f?style=for-the-badge&logo=github)](https://git-yanmartins.github.io/Noronhaverso/)
 [![Instituição](https://img.shields.io/badge/Instituição-UFBA-blue?style=for-the-badge)](#)
@@ -9,7 +9,7 @@ O presente projeto insere-se no contexto de desenvolvimento de uma aplicação w
 
 ---
 
-## ✨ Funcionalidades Principais
+##  Funcionalidades Principais
 
 - **Exploração Imersiva:** O usuário terá acesso a imagens de satélite, fotomosaicos, fotos e vídeos aéreos.
 - **Visualização 3D:** A plataforma integra modelos digitais de terreno e modelos 3D. Esses modelos permitem a visualização imersiva de afloramentos geológicos em alta resolução.
