@@ -1,20 +1,19 @@
 import "./Main.css";
 
-function Geoturismo() {
+function Geotourism() {
   return (
-    <main className="geoturismo">
-      <div className="geoturismo__viewer-frame">
+    <main className="geotourism">
+      <div className="geotourismViewerFrame">
         <iframe
           id="cesium-earth-noronha"
           title="Visualizador — Fernando de Noronha"
           src={`${process.env.PUBLIC_URL}/earth-viewer.html`}
-          className="geoturismo__iframe"
+          className="geotourismIframe"
           allowFullScreen
-          loading="lazy"
         />
       </div>
     </main>
   );
 }
 
-export default Geoturismo;
+export default Geotourism;

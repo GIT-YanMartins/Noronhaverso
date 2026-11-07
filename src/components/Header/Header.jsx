@@ -8,17 +8,17 @@ function Header({ isDarkMode, onToggleTheme }) {
 
   return (
     <header className="header">
-      <section className="header_brand">
+      <section className="headerBrand">
         <img
           src={logoImage}
           alt="Noronhaverso"
-          className="header_logo"
+          className="headerLogo"
         />
       </section>
 
-      <section className="header_menu">
+      <section className="headerMenu">
         <nav>
-          <ul className="header_list">
+          <ul className="headerList">
             <li>
               <NavLink to="/about-this-project">Sobre o projeto</NavLink>
             </li>
@@ -36,7 +36,7 @@ function Header({ isDarkMode, onToggleTheme }) {
 
         <button
           type="button"
-          className="header_theme_toggle"
+          className="headerThemeToggle"
           onClick={onToggleTheme}
           aria-label={themeLabel}
         >

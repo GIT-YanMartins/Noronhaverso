@@ -1,0 +1,24 @@
+/* ── Geotourism — Mapa full-bleed entre header e footer ── */
+
+.geotourism {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.geotourismViewerFrame {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.geotourismIframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}

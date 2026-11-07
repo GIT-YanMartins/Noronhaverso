@@ -1,0 +1,55 @@
+/* ── Page Container ── */
+
+.models3d {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Shared Section Base ── */
+
+.models3d .sectionPrimary,
+.models3d .sectionSecondary,
+.models3d .sectionTertiary {
+  width: 100%;
+  border-radius: 0.625rem;
+}
+
+/* ── Section Primary ── */
+
+.models3d .sectionPrimary {
+  border: 3px solid #2563eb;
+  height: 50vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.models3d .modelCard {
+  width: 40%;
+  height: 100%;
+  border: dashed 3px yellow;
+  background-image: url("../../../assets/images/Geoturismo_demo.jpg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ── Section Secondary ── */
+
+.models3d .sectionSecondary {
+  border: 3px solid #16a34a;
+  height: 50vh;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Section Tertiary ── */
+
+.models3d .sectionTertiary {
+  border: 3px solid #dc2626;
+  height: 50vh;
+  display: flex;
+  justify-content: flex-end;
+}

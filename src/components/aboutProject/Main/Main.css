@@ -1,10 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* ── Page Container ── */
 
-.about_this_project {
+.aboutProject {
   width: 100%;
   border: solid 3px yellow;
   flex: 1;
@@ -15,7 +11,9 @@
   overflow-x: hidden;
 }
 
-.about_this_project .class_01 {
+/* ── Hero Section ── */
+
+.aboutProject .heroSection {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -24,13 +22,13 @@
   min-height: 80vh;
   flex-shrink: 0;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: flex-end;
   padding-bottom: 2.5vh;
 }
 
-.class_01 .class_01_bg_video {
+.heroSection .heroBgVideo {
   position: absolute;
   top: 0;
   left: 0;
@@ -41,157 +39,152 @@
   pointer-events: none;
 }
 
-.class_01 .class_01_gradient_overlay {
+.heroSection .heroGradientOverlay {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  height: calc(55% - 16px);
+  height: calc(55% - 1rem);
   pointer-events: none;
   z-index: 1;
 }
 
-/* Gradiente para o Tema Claro (branco/suave) */
-.class_01 .class_01_gradient_overlay::before {
+/* Gradiente para o Tema Claro */
+.heroSection .heroGradientOverlay::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(247, 248, 252, 0.98) 0%,
-    rgba(247, 248, 252, 0.85) 45%,
-    rgba(247, 248, 252, 0.35) 75%,
-    transparent 100%
-  );
+  background: linear-gradient(to top,
+      rgba(247, 248, 252, 0.98) 0%,
+      rgba(247, 248, 252, 0.85) 45%,
+      rgba(247, 248, 252, 0.35) 75%,
+      transparent 100%);
   opacity: 1;
   transition: opacity 0.3s ease;
 }
 
-/* Gradiente para o Tema Escuro (escuro/preto) */
-.class_01 .class_01_gradient_overlay::after {
+/* Gradiente para o Tema Escuro */
+.heroSection .heroGradientOverlay::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(21, 26, 35, 0.98) 0%,
-    rgba(21, 26, 35, 0.88) 45%,
-    rgba(21, 26, 35, 0.4) 75%,
-    transparent 100%
-  );
+  background: linear-gradient(to top,
+      rgba(21, 26, 35, 0.98) 0%,
+      rgba(21, 26, 35, 0.88) 45%,
+      rgba(21, 26, 35, 0.4) 75%,
+      transparent 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-/* Alternância suave entre temas para o gradiente */
-.app.theme_dark .class_01 .class_01_gradient_overlay::before {
+.app.themeDark .heroSection .heroGradientOverlay::before {
   opacity: 0;
 }
 
-.app.theme_dark .class_01 .class_01_gradient_overlay::after {
+.app.themeDark .heroSection .heroGradientOverlay::after {
   opacity: 1;
 }
 
-.class_01 h1,
-.class_01 h2,
-.class_01 .class_01_container {
+.heroSection h1,
+.heroSection h2,
+.heroSection .heroContainer {
   position: relative;
   z-index: 2;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.class_01 h1 {
+.heroSection h1 {
   margin-bottom: 1.5vh;
   font-weight: 700;
 }
 
-.class_01 .class_01_container {
+.heroSection .heroContainer {
   width: 60vw;
   height: 12vh;
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 
-.class_01 .class_01_container p {
+.heroSection .heroContainer p {
   text-align: justify;
 }
 
 /* Cores no Tema Claro */
-.app.theme_light .class_01 h1,
-.app.theme_light .class_01 h2,
-.app.theme_light .class_01 .class_01_container,
-.app.theme_light .class_01 .class_01_container p {
+.app.themeLight .heroSection h1,
+.app.themeLight .heroSection h2,
+.app.themeLight .heroSection .heroContainer,
+.app.themeLight .heroSection .heroContainer p {
   color: #121212;
 }
 
-.app.theme_light .class_01 .class_01_container {
+.app.themeLight .heroSection .heroContainer {
   border: 2px solid #121212;
 }
 
 /* Cores no Tema Escuro */
-.app.theme_dark .class_01 h1,
-.app.theme_dark .class_01 h2,
-.app.theme_dark .class_01 .class_01_container,
-.app.theme_dark .class_01 .class_01_container p {
+.app.themeDark .heroSection h1,
+.app.themeDark .heroSection h2,
+.app.themeDark .heroSection .heroContainer,
+.app.themeDark .heroSection .heroContainer p {
   color: #f2f4f8;
 }
 
-.app.theme_dark .class_01 .class_01_container {
+.app.themeDark .heroSection .heroContainer {
   border: 2px solid #f2f4f8;
 }
 
+/* ── Cards Section ── */
 
-
-.about_this_project .class_02 {
+.aboutProject .cardsSection {
   border: 3px solid #16a34a;
   width: 100%;
   height: 500px;
   min-height: 500px;
   flex-shrink: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
 }
 
-.class_02 .class_02_asides {
+.cardsSection .cardsGroup {
   display: flex;
   flex-direction: row;
   flex: 1;
   width: 100%;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
-.class_02 .class_02_01,
-.class_02 .class_02_02 {
+.cardsSection .cardLeft,
+.cardsSection .cardRight {
   border: 3px dashed aquamarine;
   width: 22%;
   height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 1rem;
   cursor: pointer;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-.class_02 .class_02_01_hover,
-.class_02 .class_02_02_hover {
+.cardsSection .cardLeftPreview,
+.cardsSection .cardRightPreview {
   border: 3px dashed coral;
   width: 28%;
   height: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  padding: 1rem;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.class_02 .class_02_01_hover {
+.cardsSection .cardLeftPreview {
   background-image: url("../../../assets/images/Geoturismo_demo.jpg");
   background-size: cover;
   background-position: center;
@@ -200,29 +193,31 @@
   overflow: hidden;
 }
 
-.class_02_asides:has(.class_02_01:hover) .class_02_01_hover,
-.class_02 .class_02_01_hover:hover {
+.cardsGroup:has(.cardLeft:hover) .cardLeftPreview,
+.cardsSection .cardLeftPreview:hover {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
 
-.class_02_asides:has(.class_02_02:hover) .class_02_02_hover,
-.class_02 .class_02_02_hover:hover {
+.cardsGroup:has(.cardRight:hover) .cardRightPreview,
+.cardsSection .cardRightPreview:hover {
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
 
-.class_02 .class_02_01 h3,
-.class_02 .class_02_02 h3,
-.class_02 .class_02_02_hover h3 {
+.cardsSection .cardLeft h3,
+.cardsSection .cardRight h3,
+.cardsSection .cardRightPreview h3 {
   color: inherit;
   text-align: center;
   transition: color 0.3s ease;
 }
 
-.about_this_project .class_03 {
+/* ── Section Tertiary (Caixa 03) ── */
+
+.aboutProject .sectionTertiary {
   border: 3px solid #dc2626;
   height: 50vh;
   width: 20vw;

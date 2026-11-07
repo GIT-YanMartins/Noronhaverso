@@ -3,9 +3,9 @@ import "./Main.css";
 function Collaborators() {
   return (
     <main className="collaborators">
-      <section className="Leticia">
-        <section className="leticia_jpeg">FOTO AQUI</section>
-        <section className="leticia_about">
+      <section className="memberLeticia">
+        <section className="memberPhoto">FOTO AQUI</section>
+        <section className="memberBio">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
             animi ex error, nobis illum modi sapiente ratione eum sit
@@ -15,9 +15,9 @@ function Collaborators() {
         </section>
       </section>
 
-      <section className="Yan">
-        <section className="yan_jpeg">FOTO AQUI</section>
-        <section className="yan_about">
+      <section className="memberYan">
+        <section className="memberPhoto">FOTO AQUI</section>
+        <section className="memberBio">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
             animi ex error, nobis illum modi sapiente ratione eum sit
@@ -27,9 +27,9 @@ function Collaborators() {
         </section>
       </section>
 
-      <section className="Giovane">
-        <section className="giovane_jpeg">FOTO AQUI</section>
-        <section className="giovane_about">
+      <section className="memberGiovane">
+        <section className="memberPhoto">FOTO AQUI</section>
+        <section className="memberBio">
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
             animi ex error, nobis illum modi sapiente ratione eum sit
@@ -43,3 +43,4 @@ function Collaborators() {
 }
 
 export default Collaborators;
+

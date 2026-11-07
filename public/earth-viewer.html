@@ -179,6 +179,10 @@
       transition: background-color 0.2s ease, border-color 0.2s ease;
     }
 
+    .geo-popup__btn + .geo-popup__btn {
+      margin-top: 6px;
+    }
+
     .geo-popup__btn:hover {
       background: rgba(255, 255, 255, 0.12);
       border-color: rgba(255, 255, 255, 0.4);
@@ -369,10 +373,14 @@
   </div>
 
   <script>
-    // ── Fernando de Noronha: lat -3.8567, lon -32.4282 ──
+    // ── Limites e Centro de Fernando de Noronha (abrangendo de Capim Açu à Ponta da Biboca) ──
+    const noronhaBounds = [
+      [-3.885, -32.475],
+      [-3.820, -32.390],
+    ];
     const map = L.map("map", {
-      center: [-3.8567, -32.4282],
-      zoom: 13,
+      center: [-3.8541, -32.4333],
+      zoom: 12,
       zoomControl: true,
       attributionControl: true,
     });
@@ -449,9 +457,21 @@
             <button
               type="button"
               class="geo-popup__btn"
-              onclick="acessarGeoturismoVirtual()"
+              onclick="abrirModalModelo3DMorroDoisIrmaos()"
             >
               <span>Modelo 3D</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="geo-popup__btn"
+              onclick="acessarGeoturismoVirtual('morro-dois-irmaos', 'Morro Dois Irmãos')"
+            >
+              <span>Geoturismo virtual</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -467,18 +487,18 @@
     );
 
     // Função de disparo para o geoturismo virtual
-    function acessarGeoturismoVirtual() {
+    function acessarGeoturismoVirtual(spotId = "morro-dois-irmaos", spotName = "Morro Dois Irmãos") {
       if (window.parent) {
         window.parent.postMessage(
           {
             type: "ACESSAR_GEOTURISMO_VIRTUAL",
-            spot: "morro-dois-irmaos",
-            name: "Morro Dois Irmãos",
+            spot: spotId,
+            name: spotName,
           },
           "*"
         );
       }
-      console.log("Acessando geoturismo virtual: Morro Dois Irmãos");
+      console.log("Acessando geoturismo virtual: " + spotName);
     }
 
     // Efeito de aproximação suave ao clicar
@@ -533,6 +553,17 @@
               <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
               <polyline points="2 17 12 22 22 17"></polyline>
               <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="geo-popup__btn"
+            onclick="acessarGeoturismoVirtual('forte-nossa-senhora-dos-remedios', 'Forte Nossa Senhora dos Remédios')"
+          >
+            <span>Geoturismo virtual</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
             </svg>
           </button>
         </div>
@@ -598,6 +629,17 @@
               <polyline points="2 12 12 17 22 12"></polyline>
             </svg>
           </button>
+          <button
+            type="button"
+            class="geo-popup__btn"
+            onclick="acessarGeoturismoVirtual('porto-biboca', 'Ponta da Biboca / Porto')"
+          >
+            <span>Geoturismo virtual</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
     `,
@@ -659,6 +701,17 @@
               <polyline points="2 12 12 17 22 12"></polyline>
             </svg>
           </button>
+          <button
+            type="button"
+            class="geo-popup__btn"
+            onclick="acessarGeoturismoVirtual('capim-acu', 'Capim Açu')"
+          >
+            <span>Geoturismo virtual</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </button>
         </div>
       </div>
     `,
@@ -711,6 +764,18 @@
           "*"
         );
       }
+    }
+
+    function abrirModalModelo3DMorroDoisIrmaos() {
+      abrirModalModelo3D({
+        title: "Morro Dois Irmãos — Modelo 3D",
+        embedUrl: "",
+        creditTitle: "Morro Dois Irmãos",
+        creditUrl: "#",
+        authorName: "Giovane-Carneiro",
+        authorUrl: "https://sketchfab.com/Giovane-Carneiro",
+        spotId: "morro-dois-irmaos",
+      });
     }
 
     function abrirModalModelo3DForte() {
@@ -770,6 +835,26 @@
       if (event.key === "Escape") {
         fecharModalModelo3D();
       }
+    });
+
+    // Redimensionamento e enquadramento completo do mapa sem cortes
+    function ajustarTamanhoMapa() {
+      if (map) {
+        map.invalidateSize();
+      }
+    }
+
+    window.addEventListener("load", () => {
+      ajustarTamanhoMapa();
+      setTimeout(ajustarTamanhoMapa, 100);
+      setTimeout(() => {
+        ajustarTamanhoMapa();
+        map.fitBounds(noronhaBounds, { padding: [25, 25] });
+      }, 350);
+    });
+
+    window.addEventListener("resize", () => {
+      ajustarTamanhoMapa();
     });
   </script>
 </body>
