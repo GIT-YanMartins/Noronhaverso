@@ -1,11 +1,18 @@
 .app {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   text-align: center;
   transition:
     background-color 0.25s ease,
     color 0.25s ease;
+}
+
+/* Na página do mapa de geoturismo (visualizador full-screen), a viewport fica travada sem barra de rolagem */
+.app.appGeotourism,
+.app:has(.geotourism) {
+  height: 100vh;
+  overflow: hidden;
 }
 
 .app.themeLight {

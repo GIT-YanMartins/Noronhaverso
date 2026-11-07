@@ -6,6 +6,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 /* ── Shared Section Base ── */
@@ -14,42 +17,98 @@
 .models3d .sectionSecondary,
 .models3d .sectionTertiary {
   width: 100%;
+  height: 70vh;
+  min-height: 520px;
+  display: flex;
+  flex-direction: row;
   border-radius: 0.625rem;
+  overflow: hidden;
 }
 
 /* ── Section Primary ── */
 
 .models3d .sectionPrimary {
   border: 3px solid #2563eb;
-  height: 50vh;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.models3d .modelCard {
-  width: 40%;
-  height: 100%;
-  border: dashed 3px yellow;
-  background-image: url("../../../assets/images/Geoturismo_demo.jpg");
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 /* ── Section Secondary ── */
 
 .models3d .sectionSecondary {
   border: 3px solid #16a34a;
-  height: 50vh;
-  display: flex;
-  justify-content: flex-end;
 }
 
 /* ── Section Tertiary ── */
 
 .models3d .sectionTertiary {
   border: 3px solid #dc2626;
-  height: 50vh;
+}
+
+/* ── Model Info (left column) ── */
+
+.models3d .modelInfo {
+  flex: 1;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  padding: 2rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-height: 0;
+}
+
+.models3d .modelInfo h2 {
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  flex-shrink: 0;
+}
+
+/* ── Model Description (scrollable) ── */
+
+.models3d .modelDescription {
+  flex: 1;
+  overflow-y: auto;
+  text-align: justify;
+  line-height: 1.6;
+  min-height: 0;
+}
+
+.models3d .modelDescription p {
+  margin: 0;
+}
+
+/* ── Model Reference ── */
+
+.models3d .modelReference {
+  flex-shrink: 0;
+  margin-top: 18px;
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.models3d .modelReference p {
+  margin: 0;
+}
+
+.models3d .modelReference a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.models3d .modelReference a:hover {
+  opacity: 0.9;
+}
+
+/* ── Model Embed (right column with Sketchfab iframe) ── */
+
+.models3d .modelEmbed {
+  width: 50%;
+  flex-shrink: 0;
+  border-left: dashed 3px yellow;
+  display: flex;
+}
+
+.models3d .modelEmbed iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
 }

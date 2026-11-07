@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
@@ -10,13 +10,20 @@ import Geotourism from "./components/geotourism/Main/Main";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const location = useLocation();
 
   const toggleTheme = () => {
     setIsDarkMode((previousMode) => !previousMode);
   };
 
+  const isGeotourism = location.pathname.startsWith("/geoturismo");
+
   return (
-    <section className={`app ${isDarkMode ? "themeDark" : "themeLight"}`}>
+    <section
+      className={`app ${isDarkMode ? "themeDark" : "themeLight"} ${
+        isGeotourism ? "appGeotourism" : ""
+      }`}
+    >
       <Header isDarkMode={isDarkMode} onToggleTheme={toggleTheme} />
 
       <Routes>
