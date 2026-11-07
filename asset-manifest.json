@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Noronhaverso/static/css/main.85555107.css",
-    "main.js": "/Noronhaverso/static/js/main.856ac72f.js",
+    "main.css": "/Noronhaverso/static/css/main.1a99e377.css",
+    "main.js": "/Noronhaverso/static/js/main.37ba989d.js",
     "static/js/453.8f669267.chunk.js": "/Noronhaverso/static/js/453.8f669267.chunk.js",
     "static/media/Intro.mp4": "/Noronhaverso/static/media/Intro.858dd56129d035324b5e.mp4",
     "static/media/Geoturismo_demo.jpg": "/Noronhaverso/static/media/Geoturismo_demo.8f39d2c0c767d900d102.jpg",
@@ -9,12 +9,12 @@
     "static/media/Topography_white.jpg": "/Noronhaverso/static/media/Topography_white.33a72c3405dd21f4ee06.jpg",
     "static/media/logo.png": "/Noronhaverso/static/media/logo.fba2332ebf7f187a678b.png",
     "index.html": "/Noronhaverso/index.html",
-    "main.85555107.css.map": "/Noronhaverso/static/css/main.85555107.css.map",
-    "main.856ac72f.js.map": "/Noronhaverso/static/js/main.856ac72f.js.map",
+    "main.1a99e377.css.map": "/Noronhaverso/static/css/main.1a99e377.css.map",
+    "main.37ba989d.js.map": "/Noronhaverso/static/js/main.37ba989d.js.map",
     "453.8f669267.chunk.js.map": "/Noronhaverso/static/js/453.8f669267.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.85555107.css",
-    "static/js/main.856ac72f.js"
+    "static/css/main.1a99e377.css",
+    "static/js/main.37ba989d.js"
   ]
 }
